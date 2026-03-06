@@ -17,6 +17,7 @@ map<std::string, ParseBasicType> basic_types = {
 	{"unsigned short[]", parse_as_arrray<uint16_t>},
 	{"unsigned long[]", parse_as_arrray<uint32_t>},
 	{"unsigned int64[]", parse_as_arrray<uint64_t>},
+	{"void*[]", parse_as_arrray<Address>},
 
 	{"void*", parse_basic_type<Address>},
 
@@ -61,14 +62,33 @@ shared_ptr<GenericTypeContainer> do_type_magic(DebugMagic& debugmagic, Address a
 	{
 		Address field_address = address + static_cast<Address>(field_item.second.offset);
 
-		container->set(field_item.first, do_field_magic(debugmagic, field_address, const_cast<FieldInfo&>(field_item.second)));
+		Expected<TypedValue> field_value = do_field_magic(debugmagic, field_address, const_cast<FieldInfo&>(field_item.second));
+		if (!field_value.has_value())
+		{
+			continue;
+		}
+
+		container->set(field_item.first, *field_value);
 	}
 
 	return container;
 }
 
 
-TypedValue do_field_magic(DebugMagic& debugmagic, Address field_address, FieldInfo& field_info)
+Expected<TypedValue> do_parse_pointer(DebugMagic& debugmagic, Address pointer_address,const std::string& module_name, const std::string& pointer_type)
+{
+	
+	Expected<Address> value = debugmagic.memory().read_pointer_memory_virtual(pointer_address);
+	if (!value.has_value()) {
+		return unexpected(value.error());
+	}
+	
+	return TypedValue(module_name, pointer_type,*value);
+
+}
+
+
+ Expected<TypedValue> do_field_magic(DebugMagic& debugmagic, Address field_address, FieldInfo& field_info)
 {
 	auto basic_type_ptr = basic_types.find(field_info.type_name);
 
@@ -84,11 +104,20 @@ TypedValue do_field_magic(DebugMagic& debugmagic, Address field_address, FieldIn
 
 		auto value_type_info = debugmagic.get_field_info_magic().get_type_info(field_info.module_name, value_type_name.data());
 		if (!value_type_info.has_value()) {
-			throw value_type_info.error();
+			return unexpected(value_type_info.error());
 		}
 
 		vector<TypedValue> values;
 		for (size_t i = 0; i < field_info.size; i += value_type_info.value()->type_size) {
+
+			if (value_type_name.ends_with(POINTER_SUFFIX))
+			{
+				auto ptr_val = do_parse_pointer(debugmagic,field_address + i, field_info.module_name, value_type_name.data());
+				if (!ptr_val.has_value())
+					break;
+				values.emplace_back(*ptr_val);
+				continue;
+			}
 			shared_ptr<GenericTypeContainer> nested = do_type_magic(debugmagic,
 																	field_address + i,
 																	value_type_name.data(),
@@ -102,12 +131,8 @@ TypedValue do_field_magic(DebugMagic& debugmagic, Address field_address, FieldIn
 
 	if (field_info.type_name.ends_with(POINTER_SUFFIX))
 	{
-		Expected<Address> value = debugmagic.read_pointer_memory_virtual(field_address);
-		if (!value.has_value()) {
-			throw value.error();
-		}
 
-		return TypedValue(field_info.module_name, field_info.type_name, *value);
+		return do_parse_pointer(debugmagic, field_address, field_info.module_name, field_info.type_name);
 	}
 
 
@@ -142,8 +167,8 @@ Expected<std::shared_ptr<GenericTypeContainer>> do_magic_pointer(DebugMagic& deb
 		try {
 			return do_type_magic(debugmagic, ptr_val, value_type_name, resolve_ptr.s_module_name);
 		}
-		catch (...) {
-			return unexpected(exception("Can't read this pointer - invalid address"));
+		catch (const exception& exp) {
+			return unexpected(exp);
 		}
 	}
 }
@@ -151,7 +176,7 @@ Expected<std::shared_ptr<GenericTypeContainer>> do_magic_pointer(DebugMagic& deb
 
 TypedValue parse_as_as_bytes(DebugMagic& debugmagic, Address field_address, FieldInfo& field_info)
 {
-	Expected<Bytes> value = debugmagic.read_memory_virtual(field_address, field_info.size);
+	Expected<Bytes> value = debugmagic.memory().read_memory_virtual(field_address, field_info.size);
 	if (value.has_value()) {
 		return TypedValue(field_info.module_name, field_info.type_name, *value);
 	}

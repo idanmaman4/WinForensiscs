@@ -7,7 +7,7 @@ Expected<CV_INFO_PDB70> get_pdb_info_for_pe(DebugMagic& debugmagic, Address modu
 {
    auto failed_result = unexpected(std::exception("Couldn't find pdb information in given module base"));
 
-   Expected<Bytes> ntos_header = debugmagic.read_memory_virtual(module_base, PE_HEADER_SIZE);
+   Expected<Bytes> ntos_header = debugmagic.memory().read_memory_virtual(module_base, PE_HEADER_SIZE);
    if(!ntos_header.has_value())
        return failed_result;
 
@@ -23,7 +23,7 @@ Expected<CV_INFO_PDB70> get_pdb_info_for_pe(DebugMagic& debugmagic, Address modu
    if (debugDirInfo.Size == 0)
        return failed_result;
 
-   Expected<Bytes> debug_directory = debugmagic.read_memory_virtual(module_base + debugDirInfo.VirtualAddress, debugDirInfo.Size);
+   Expected<Bytes> debug_directory = debugmagic.memory().read_memory_virtual(module_base + debugDirInfo.VirtualAddress, debugDirInfo.Size);
    if(!debug_directory.has_value())
        return failed_result;
 
@@ -34,7 +34,7 @@ Expected<CV_INFO_PDB70> get_pdb_info_for_pe(DebugMagic& debugmagic, Address modu
 
     for (DWORD i = 0; i < numEntries; i++, debugEntry++) {
         if (debugEntry->Type == IMAGE_DEBUG_TYPE_CODEVIEW) {
-            Expected<CV_INFO_PDB70> debug_info =  debugmagic.read_struct_memory_virtual<CV_INFO_PDB70>(module_base + debugEntry->AddressOfRawData);
+            Expected<CV_INFO_PDB70> debug_info =  debugmagic.memory().read_struct_memory_virtual<CV_INFO_PDB70>(module_base + debugEntry->AddressOfRawData);
             if (debug_info.has_value()) {
                 return debug_info.value();
             }

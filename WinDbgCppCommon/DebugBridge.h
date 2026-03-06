@@ -68,7 +68,27 @@ concept IsDebugInterface =
     std::derived_from<T, IDebugDataSpaces> ||
     std::derived_from<T, IDebugDataSpaces2> ||
     std::derived_from<T, IDebugDataSpaces3> ||
-    std::derived_from<T, IDebugDataSpaces4> ;
+    std::derived_from<T, IDebugDataSpaces4> || 
+    std::derived_from<T, IDebugSystemObjects> ||
+    std::derived_from<T, IDebugSystemObjects2> ||
+    std::derived_from<T, IDebugSystemObjects3> ||
+    std::derived_from<T, IDebugSystemObjects4> || 
+    std::derived_from<T, IDebugAdvanced> || 
+    std::derived_from<T, IDebugAdvanced2> || 
+	std::derived_from<T, IDebugAdvanced3> ||
+	std::derived_from<T, IDebugAdvanced4> ||
+	std::derived_from<T, IDebugPlmClient> || 
+	std::derived_from<T, IDebugPlmClient2> || 
+	std::derived_from<T, IDebugPlmClient3> || 
+	std::derived_from<T, IDebugRegisters> || 
+	std::derived_from<T, IDebugRegisters2> || 
+	std::derived_from<T, IDebugBreakpoint> || 
+	std::derived_from<T, IDebugBreakpoint2> || 
+	std::derived_from<T, IDebugBreakpoint3> ;
+
+
+
+
 
 
 template <IsDebugInterface T>
@@ -114,5 +134,9 @@ inline DebugBridge<T>::~DebugBridge()
 template <IsDebugInterface T>
 T* DebugBridge<T>::get_interface() const 
 { 
+    if (!m_debug_bridge_interface) {
+        throw std::exception("Invalid Interface Access");
+    }
+    
     return m_debug_bridge_interface; 
 }

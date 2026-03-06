@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinForensics", "WinForensiscs\WinForensiscs.vcxproj", "{1B013434-957F-4BF6-8222-427DBD61597D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinMagic", "WinForensiscs\WinForensiscs.vcxproj", "{1B013434-957F-4BF6-8222-427DBD61597D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinDbgCppCommon", "WinDbgCppCommon\WinDbgCppCommon.vcxitems", "{5F48FB1D-5F2B-4C90-AC09-227EF8AB2576}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinMagicCommon", "WinDbgCppCommon\WinDbgCppCommon.vcxitems", "{5F48FB1D-5F2B-4C90-AC09-227EF8AB2576}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinForensicsExt", "WinForensicsExt\WinForensicsExt.vcxproj", "{EF2673E0-0CF8-4533-92AA-DF456ABB20A7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinMagicExt", "WinForensicsExt\WinForensicsExt.vcxproj", "{EF2673E0-0CF8-4533-92AA-DF456ABB20A7}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinForensicsPlugins", "Plugins\Plugins.vcxitems", "{6E6F0265-D0D7-4E34-A77B-06DC94348BDE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MagicUtils", "MagicUtils\MagicUtils.vcxitems", "{BA9A515A-7626-4C19-8430-70BD4CBBAAC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +48,7 @@ Global
 		WinDbgCppCommon\WinDbgCppCommon.vcxitems*{1b013434-957f-4bf6-8222-427dbd61597d}*SharedItemsImports = 4
 		WinDbgCppCommon\WinDbgCppCommon.vcxitems*{5f48fb1d-5f2b-4c90-ac09-227ef8ab2576}*SharedItemsImports = 9
 		Plugins\Plugins.vcxitems*{6e6f0265-d0d7-4e34-a77b-06dc94348bde}*SharedItemsImports = 9
+		MagicUtils\MagicUtils.vcxitems*{ba9a515a-7626-4c19-8430-70bd4cbbaac7}*SharedItemsImports = 9
 		WinDbgCppCommon\WinDbgCppCommon.vcxitems*{ef2673e0-0cf8-4533-92aa-df456abb20a7}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

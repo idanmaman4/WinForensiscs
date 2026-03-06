@@ -30,6 +30,11 @@ const std::optional<TypedValue> GenericTypeContainer::get(const std::string& fie
 
 
 Expected<Address> GenericTypeContainer::as_pointer(const std::string& field) {
+
+    if (!m_fields.at(field).s_type_name.ends_with("*")) {
+        return unexpected(exception("Type is not a Pointer!"));
+    }
+
     Expected<Address> address = std::visit([](auto&& v) -> Expected<Address>{
         using T = std::decay_t<decltype(v)>;
         if constexpr (std::is_same_v<T, uint32_t>) return static_cast<Address>(v);
@@ -59,7 +64,7 @@ Expected<std::string> GenericTypeContainer::as_string(const std::string& field) 
         using T = std::decay_t<decltype(v)>;
         if constexpr (std::is_same_v<T, std::vector<int8_t>>)  return std::string(v.begin(), v.end());
         if constexpr (std::is_same_v<T, std::vector<uint8_t>>)  return std::string(v.begin(), v.end());
-        return unexpected(exception("Can't convert to string or find request field"));
+        return unexpected(exception("Can't  convert to string or find request field"));
     }, m_fields.at(field).s_value);
 }
 

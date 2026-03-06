@@ -17,13 +17,13 @@ FieldInfoMagic::~FieldInfoMagic()
 
 void FieldInfoMagic::pre_create_cache_for_type(const std::string& module_name, const std::string& type_name){
 	
-	Expected<Address> mod_address = m_debug_magic.get_module_base(module_name);
+	Expected<Address> mod_address = m_debug_magic.symbols().get_module_base(module_name);
 	
 	if (!mod_address.has_value()) {
 		 throw mod_address.error();
 	}
 
-	auto type_id = m_debug_magic.get_type_id(*mod_address, type_name);
+	auto type_id = m_debug_magic.symbols().get_type_id(*mod_address, type_name);
 	if (!type_id.has_value()) {
 		throw type_id.error();
 	}
@@ -39,13 +39,13 @@ void FieldInfoMagic::pre_create_cache_for_type(const std::string& module_name, c
 
 	auto& type_cache = symbol_table[type_name] = TypeInfoCache();
 	
-	auto field_names = m_debug_magic.get_field_names(*mod_address, *type_id);
+	auto field_names = m_debug_magic.symbols().get_field_names(*mod_address, *type_id);
 	if (!field_names.has_value()) {
 		throw field_names.error();
 	}
 
 	for (auto& field_name: field_names.value()) {
-		auto field_info = m_debug_magic.get_field_info(*mod_address, *type_id, field_name);
+		auto field_info = m_debug_magic.symbols().get_field_info(*mod_address, *type_id, field_name);
 		
 		if (!field_info.has_value()) {
 			continue;
@@ -56,7 +56,7 @@ void FieldInfoMagic::pre_create_cache_for_type(const std::string& module_name, c
 		type_cache.fields[field_name] = *field_info;
 	
 	}
-	Expected<size_t> type_size = m_debug_magic.get_type_size(*mod_address, *type_id);
+	Expected<size_t> type_size = m_debug_magic.symbols().get_type_size(*mod_address, *type_id);
 	if (!type_size.has_value()) {
 		throw type_size.error();
 	}

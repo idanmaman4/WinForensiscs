@@ -27,15 +27,17 @@ namespace TypeMagic
 
 	std::shared_ptr<GenericTypeContainer> do_type_magic(DebugMagic& debugmagic, Address field_address, std::string type_name, const std::string& module_base);
 
-	TypedValue do_field_magic(DebugMagic& debugmagic, Address field_address, FieldInfo& field_info);
+	Expected<TypedValue> do_field_magic(DebugMagic& debugmagic, Address field_address, FieldInfo& field_info);
 
 	Expected<std::shared_ptr<GenericTypeContainer>> do_magic_pointer(DebugMagic& debugmagic, TypedValue resolve_ptr);
+
+	Expected<TypedValue> do_parse_pointer(DebugMagic& debugmagic, Address pointer_address,const std::string& module_name, const std::string& pointer_type);
 
 
 	template <typename T>
 	TypedValue parse_basic_type(DebugMagic& debugmagic, Address field_address, FieldInfo& field_info)
 	{
-		Expected<T> value =  debugmagic.read_struct_memory_virtual<T>(field_address);
+		Expected<T> value =  debugmagic.memory().read_struct_memory_virtual<T>(field_address);
 		
 		if (!value.has_value()) {
 			throw value.error();
@@ -51,7 +53,7 @@ namespace TypeMagic
 	{
 		std::vector<T> res;
 		for (size_t i = 0; i < field_info.size; i += sizeof(T)) {
-			Expected<T> value_at_index = debugmagic.read_struct_memory_virtual<T>(field_address + i );
+			Expected<T> value_at_index = debugmagic.memory().read_struct_memory_virtual<T>(field_address + i );
 			if (!value_at_index.has_value()) {
 				throw value_at_index.error(); 
 			}
