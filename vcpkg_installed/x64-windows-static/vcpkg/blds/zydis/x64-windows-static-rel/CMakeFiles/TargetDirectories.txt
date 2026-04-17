@@ -1,0 +1,12 @@
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/Zydis.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/ZydisDisasm.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/ZydisFuzzDecoder.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/ZydisFuzzEncoder.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/ZydisFuzzReEncoding.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/ZydisTestEncoderAbsolute.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/ZydisInfo.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/edit_cache.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/rebuild_cache.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/list_install_components.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/install.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/zydis/x64-windows-static-rel/CMakeFiles/install/local.dir

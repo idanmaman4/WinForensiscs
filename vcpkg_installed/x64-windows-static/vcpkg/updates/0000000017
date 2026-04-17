@@ -1,0 +1,6 @@
+Package: polyhook2
+Feature: virtuals
+Architecture: x64-windows-static
+Multi-Arch: same
+Description: Implement all virtual table hooking functionality
+Status: install ok half-installed

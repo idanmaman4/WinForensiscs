@@ -1,0 +1,10 @@
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/pkgs/asmtk_x64-windows-static/lib/asmtk.lib
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/pkgs/asmtk_x64-windows-static/lib/cmake/asmtk/asmtk-config.cmake
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/pkgs/asmtk_x64-windows-static/lib/cmake/asmtk/asmtk-config-release.cmake
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/pkgs/asmtk_x64-windows-static/include/asmtk/asmtk.h
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/pkgs/asmtk_x64-windows-static/include/asmtk/asmparser.h
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/pkgs/asmtk_x64-windows-static/include/asmtk/asmtokenizer.h
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/pkgs/asmtk_x64-windows-static/include/asmtk/elfdefs.h
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/pkgs/asmtk_x64-windows-static/include/asmtk/globals.h
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/pkgs/asmtk_x64-windows-static/include/asmtk/parserutils.h
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/pkgs/asmtk_x64-windows-static/include/asmtk/strtod.h

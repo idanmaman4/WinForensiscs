@@ -1,0 +1,16 @@
+# ninja log v5
+89	366	7981209854352192	CMakeFiles/Zycore.dir/src/ArgParse.c.obj	e64a7ba1161e8fb8
+78	387	7981209854691115	CMakeFiles/Zycore.dir/src/Allocator.c.obj	87b1241b2945cee5
+100	502	7981209855916719	CMakeFiles/Zycore.dir/src/Bitset.c.obj	36ba4abc242c8dce
+112	515	7981209856036736	CMakeFiles/Zycore.dir/src/Format.c.obj	51954342a9d96942
+378	746	7981209857607281	CMakeFiles/Zycore.dir/src/List.c.obj	2ab006ca0a968696
+388	747	7981209857937265	CMakeFiles/Zycore.dir/src/String.c.obj	9a4d80bcc94b2462
+502	748	7981209858428329	CMakeFiles/Zycore.dir/src/Vector.c.obj	d2b0943267537ff1
+516	793	7981209858885726	CMakeFiles/Zycore.dir/src/Zycore.c.obj	ac4af129244cd964
+8	818	7981209859124789	CMakeFiles/Zycore.dir/src/API/Memory.c.obj	b67b302de355d734
+68	820	7981209859158040	CMakeFiles/Zycore.dir/src/API/Thread.c.obj	78747607cdf1c071
+24	830	7981209859272504	CMakeFiles/Zycore.dir/src/API/Process.c.obj	b89db6ca7d23f63e
+42	832	7981209859316896	CMakeFiles/Zycore.dir/src/API/Synchronization.c.obj	a57e780ccb4f17df
+57	856	7981209859548425	CMakeFiles/Zycore.dir/src/API/Terminal.c.obj	71ed6ebc1a35588d
+856	943	7981209860232062	Zycore.lib	c12746c79f543701
+943	1875	0	CMakeFiles/install.util	2bcdb4a4774085ef

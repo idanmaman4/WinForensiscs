@@ -1,0 +1,7 @@
+Package: asmjit
+Version: 2023-03-25
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 4761f323f40d059e8b66c312d1abc0f023ee6d8e26b35c59c7f7d1976cc02326
+Description: Complete x86/x64 JIT and Remote Assembler for C++

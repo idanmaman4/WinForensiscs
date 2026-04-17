@@ -8,16 +8,44 @@
 #include<vector>
 #include <array>
 #include <ranges>
+#include "polyhook2/Detour/x64Detour.hpp"
 #include "DebugMagic.h"
 #include "MagicUtils.h"
 #include "ProcessMagic.h"
 #include "GenericTypeContainer.h"
+#include "extsfns.h"
 #pragma comment(lib, "urlmon.lib")
 #pragma comment(lib, "dbgeng.lib")
 
 
 
 
+
+namespace
+{
+    struct HandleEnumCtx
+    {
+        ULONG count;
+    };
+
+    BOOLEAN handle_enum_cb(PKDEXT_HANDLE_INFORMATION info, ULONG /*flags*/, PVOID ctx)
+    {
+        auto* c = static_cast<HandleEnumCtx*>(ctx);
+        c->count += 1;
+
+        std::cout << "      Handle 0x" << std::hex << info->Handle
+                  << " Object 0x"    << info->Object
+                  << " Body 0x"      << info->ObjectBody
+                  << " Access 0x"    << info->GrantedAccess
+                  << " Attr 0x"      << info->HandleAttributes
+                  << std::dec
+                  << (info->PagedOut ? " [paged-out]" : "")
+                  << "\n";
+
+		
+        return TRUE;
+    }
+}
 
 int wmain(int argc, wchar_t* argv[])
 {
@@ -70,9 +98,9 @@ int wmain(int argc, wchar_t* argv[])
 		return -1;
 	}
 
-	Address current_link = process_head.value()->get<Address>("Flink").value();    
+	Address current_link = process_head.value()->get<Address>("Flink").value();
 	auto head= process_head.value()->address();
-	
+
 	i=0;
 	do {
 	   i+=1;
@@ -119,6 +147,22 @@ int wmain(int argc, wchar_t* argv[])
 				   std::cout << peb.error().what() << std::endl;
 			   }
 
+			   HandleEnumCtx handle_ctx{ 0 };
+			   HRESULT hr = debug_magic.efn().enumerate_handles(
+				   eprocess.value()->address(),
+				   0,
+				   0,
+				   handle_enum_cb,
+				   &handle_ctx);
+			   if (SUCCEEDED(hr))
+			   {
+				   std::cout << "      -> " << handle_ctx.count << " handle(s)\n";
+			   }
+			   else
+			   {
+				   std::cout << "      handle enumeration failed: 0x"
+							 << std::hex << hr << std::dec << "\n";
+			   }
 		   }
 	   }
 		catch (const std::exception& exp)
@@ -135,9 +179,9 @@ int wmain(int argc, wchar_t* argv[])
 	   }
 
 	   current_link = link.value();
-	
+
 	}while (current_link != 0 && current_link != head);
-	
-	
+
+
 	return 0;
 }

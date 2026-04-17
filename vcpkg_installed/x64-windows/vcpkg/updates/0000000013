@@ -1,0 +1,7 @@
+Package: polyhook2
+Feature: detours
+Depends: asmjit, asmtk
+Architecture: x64-windows
+Multi-Arch: same
+Description: Implement detour functionality
+Status: install ok half-installed

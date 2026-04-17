@@ -1,0 +1,7 @@
+Package: polyhook2
+Feature: inlinentd
+Depends: asmjit
+Architecture: x64-windows-static
+Multi-Arch: same
+Description: Support inline hooks without specifying typedefs by generating callback stubs at runtime with AsmJit
+Status: install ok installed

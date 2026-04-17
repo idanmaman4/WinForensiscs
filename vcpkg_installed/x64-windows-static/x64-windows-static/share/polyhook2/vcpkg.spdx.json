@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.2.1/schemas/spdx-schema.json",
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "documentNamespace": "https://spdx.org/spdxdocs/polyhook2-x64-windows-static-2023-08-11-712f4d00-f5bc-4dc9-aea0-89eb3f9cb341",
+  "name": "polyhook2:x64-windows-static@2023-08-11 a71db106c056dd3c742e5813152fc3fb0fdbb204423b80ca6aa69d9637f7133e",
+  "creationInfo": {
+    "creators": [
+      "Tool: vcpkg-7d353e869753e5609a1f1a057df3db8fd356e49d"
+    ],
+    "created": "2026-04-17T09:23:53Z"
+  },
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "GENERATES",
+      "relatedSpdxElement": "SPDXRef-binary"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-0"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-1"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-2"
+    },
+    {
+      "spdxElementId": "SPDXRef-binary",
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-0",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-1",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-2",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    }
+  ],
+  "packages": [
+    {
+      "name": "polyhook2",
+      "SPDXID": "SPDXRef-port",
+      "versionInfo": "2023-08-11",
+      "downloadLocation": "git+https://github.com/microsoft/vcpkg@00a3d485f743b08f8c407139e5e8210468f44573",
+      "homepage": "https://github.com/stevemk14ebr/PolyHook_2_0",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "C++17, x86/x64 Hooking Library v2.0",
+      "comment": "This is the port (recipe) consumed by vcpkg."
+    },
+    {
+      "name": "polyhook2:x64-windows-static",
+      "SPDXID": "SPDXRef-binary",
+      "versionInfo": "a71db106c056dd3c742e5813152fc3fb0fdbb204423b80ca6aa69d9637f7133e",
+      "downloadLocation": "NONE",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "This is a binary package built by vcpkg."
+    },
+    {
+      "SPDXID": "SPDXRef-resource-1",
+      "name": "stevemk14ebr/PolyHook_2_0",
+      "downloadLocation": "git+https://github.com/stevemk14ebr/PolyHook_2_0@71553ebf0d197e73c49365cc3ab2a6aa326b3c37",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "checksums": [
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "f8daaa0307f07990b10a6487e1b0f2719e7442fcaeff5878eae9c22a741f27b1dfa7a292b91dcf7e2039029dd7dce71083ab2288e9d84de1bc20be7567a858c8"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "fileName": "./C:/Users/Idang/AppData/Local/vcpkg/registries/git-trees/00a3d485f743b08f8c407139e5e8210468f44573/fix-dep.patch",
+      "SPDXID": "SPDXRef-file-0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5cbcf0fa37bb9ede77aeb4374ff316efe4dd7e78a1c3238c751f2fb54780dad3"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./C:/Users/Idang/AppData/Local/vcpkg/registries/git-trees/00a3d485f743b08f8c407139e5e8210468f44573/portfile.cmake",
+      "SPDXID": "SPDXRef-file-1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "c84da0378e471ab9796783b044dc283b0e6d0bc5a6d71b25d26065cf6dc10d4a"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./C:/Users/Idang/AppData/Local/vcpkg/registries/git-trees/00a3d485f743b08f8c407139e5e8210468f44573/vcpkg.json",
+      "SPDXID": "SPDXRef-file-2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8d305666bb5128d6345cc542da1a4cd6f806d976672e9dde62070cc113eb1ce8"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    }
+  ]
+}

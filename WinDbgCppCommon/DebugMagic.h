@@ -19,6 +19,7 @@
 #include "CommandMagic.h"
 #include "ClientMagic.h"
 #include "SystemMagic.h"
+#include "EfnMagic.h"
 
 class DebugMagic
 {
@@ -71,6 +72,8 @@ public:
     MemoryMagic& memory();
     SymbolMagic& symbols();
     SystemMagic& system();
+    EfnMagic&    efn();
+    MasterDebugBridge& master();
 
 
 private:
@@ -78,13 +81,14 @@ private:
     SymbolClient m_symbol_client;
     MasterDebugBridge m_master_bridge;
     
-    // clients... 
+    // clients...
     MemoryMagic m_memory;
     SymbolMagic m_symbols;
     FieldInfoMagic m_field_magic;
     ClientMagic m_client;
     ControlMagic m_control;
     SystemMagic m_system;
+    EfnMagic    m_efn;
 };
 
 

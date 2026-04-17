@@ -1,0 +1,6 @@
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/vcpkg/blds/polyhook2/x64-windows-rel/CMakeFiles/PolyHook_2.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/vcpkg/blds/polyhook2/x64-windows-rel/CMakeFiles/edit_cache.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/vcpkg/blds/polyhook2/x64-windows-rel/CMakeFiles/rebuild_cache.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/vcpkg/blds/polyhook2/x64-windows-rel/CMakeFiles/list_install_components.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/vcpkg/blds/polyhook2/x64-windows-rel/CMakeFiles/install.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/vcpkg/blds/polyhook2/x64-windows-rel/CMakeFiles/install/local.dir

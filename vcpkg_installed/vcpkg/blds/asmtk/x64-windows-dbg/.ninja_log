@@ -1,0 +1,6 @@
+# ninja log v5
+24	453	7981203838636467	CMakeFiles/asmtk.dir/src/asmtk/asmtokenizer.cpp.obj	8474e659895c2c77
+4	1180	7981203845897270	CMakeFiles/asmtk.dir/src/asmtk/asmparser.cpp.obj	1693d61de74d0124
+1180	1545	7981203849356051	asmtk.dll	7daa6fdffc6c7891
+1180	1545	7981203849356051	asmtk.lib	7daa6fdffc6c7891
+1546	2105	0	CMakeFiles/install.util	313d1944ff9553f8

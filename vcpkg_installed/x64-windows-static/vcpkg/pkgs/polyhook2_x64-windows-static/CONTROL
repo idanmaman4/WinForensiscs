@@ -1,0 +1,40 @@
+Package: polyhook2
+Version: 2023-08-11
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows, zydis
+Architecture: x64-windows-static
+Multi-Arch: same
+Abi: a71db106c056dd3c742e5813152fc3fb0fdbb204423b80ca6aa69d9637f7133e
+Description: C++17, x86/x64 Hooking Library v2.0
+Default-Features: detours, exception, inlinentd, pe, virtuals
+
+Package: polyhook2
+Feature: detours
+Depends: asmjit, asmtk
+Architecture: x64-windows-static
+Multi-Arch: same
+Description: Implement detour functionality
+
+Package: polyhook2
+Feature: exception
+Architecture: x64-windows-static
+Multi-Arch: same
+Description: Implement all exception hooking functionality
+
+Package: polyhook2
+Feature: inlinentd
+Depends: asmjit
+Architecture: x64-windows-static
+Multi-Arch: same
+Description: Support inline hooks without specifying typedefs by generating callback stubs at runtime with AsmJit
+
+Package: polyhook2
+Feature: pe
+Architecture: x64-windows-static
+Multi-Arch: same
+Description: Implement all win pe hooking functionality
+
+Package: polyhook2
+Feature: virtuals
+Architecture: x64-windows-static
+Multi-Arch: same
+Description: Implement all virtual table hooking functionality

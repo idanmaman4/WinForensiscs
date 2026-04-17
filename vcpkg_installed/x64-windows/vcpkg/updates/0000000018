@@ -1,0 +1,9 @@
+Package: polyhook2
+Version: 2023-08-11
+Depends: vcpkg-cmake, vcpkg-cmake-config, zydis
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 4c95bbaf06c68e7e7d46d6433ead135ffef796acfdf8c987f5d3cf21dd88105c
+Description: C++17, x86/x64 Hooking Library v2.0
+Default-Features: detours, exception, inlinentd, pe, virtuals
+Status: install ok installed

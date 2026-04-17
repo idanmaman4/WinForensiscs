@@ -1,0 +1,6 @@
+Package: polyhook2
+Feature: exception
+Architecture: x64-windows-static
+Multi-Arch: same
+Description: Implement all exception hooking functionality
+Status: install ok half-installed

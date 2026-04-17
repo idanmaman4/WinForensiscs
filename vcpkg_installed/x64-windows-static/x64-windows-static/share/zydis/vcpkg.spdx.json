@@ -1,0 +1,147 @@
+{
+  "$schema": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.2.1/schemas/spdx-schema.json",
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "documentNamespace": "https://spdx.org/spdxdocs/zydis-x64-windows-static-4.0.0#2-a768041a-25a9-46bd-8623-64cfcb9e8a89",
+  "name": "zydis:x64-windows-static@4.0.0#2 a96fdf178183b722d6cd190f63c5015b964938a30f3ea0d1d4c7b5e0fef6245c",
+  "creationInfo": {
+    "creators": [
+      "Tool: vcpkg-7d353e869753e5609a1f1a057df3db8fd356e49d"
+    ],
+    "created": "2026-04-17T09:23:25Z"
+  },
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "GENERATES",
+      "relatedSpdxElement": "SPDXRef-binary"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-0"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-1"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-2"
+    },
+    {
+      "spdxElementId": "SPDXRef-binary",
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-0",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-1",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-2",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    }
+  ],
+  "packages": [
+    {
+      "name": "zydis",
+      "SPDXID": "SPDXRef-port",
+      "versionInfo": "4.0.0#2",
+      "downloadLocation": "git+https://github.com/microsoft/vcpkg@4057692f573c3990f5767e5e2952fc54a76cb1c9",
+      "homepage": "https://zydis.re",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "Fast and lightweight x86/x86-64 disassembler library.",
+      "comment": "This is the port (recipe) consumed by vcpkg."
+    },
+    {
+      "name": "zydis:x64-windows-static",
+      "SPDXID": "SPDXRef-binary",
+      "versionInfo": "a96fdf178183b722d6cd190f63c5015b964938a30f3ea0d1d4c7b5e0fef6245c",
+      "downloadLocation": "NONE",
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "This is a binary package built by vcpkg."
+    },
+    {
+      "SPDXID": "SPDXRef-resource-1",
+      "name": "zyantific/zydis",
+      "downloadLocation": "git+https://github.com/zyantific/zydis@v4.0.0",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "checksums": [
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "334284bccfb6ce61cc530fd479d6278db3e4df1fb52b311acd7d21558843c9bf14e74a199cd937041d434260b65c506c07ae1a37243d2240eb9443ae5e56e000"
+        }
+      ]
+    },
+    {
+      "SPDXID": "SPDXRef-resource-2",
+      "name": "zydis-intel-alignment-fix-a605f54580c26d2164530fab323057834569d169.patch",
+      "packageFileName": "zydis-intel-alignment-fix-a605f54580c26d2164530fab323057834569d169.patch",
+      "downloadLocation": "https://github.com/zyantific/zydis/commit/a605f54580c26d2164530fab323057834569d169.patch?full_index=1",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "checksums": [
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "15fad10e4880ab2ee494babc0451b96604a6cc00c09c6740c6b97b83718e01d8e117614bf8f9ec8a6777e9baa1336c7f540709b21dcdc9b53f912bd117f1d3c0"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "fileName": "./C:/Users/Idang/AppData/Local/vcpkg/registries/git-trees/4057692f573c3990f5767e5e2952fc54a76cb1c9/portfile.cmake",
+      "SPDXID": "SPDXRef-file-0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "139c7aa00e8f5a441baff9cdfe76af773f225822ab6cb43e3af4871362f5d040"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./C:/Users/Idang/AppData/Local/vcpkg/registries/git-trees/4057692f573c3990f5767e5e2952fc54a76cb1c9/vcpkg.json",
+      "SPDXID": "SPDXRef-file-1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "4a84ffe20755f69de43e2f5c53ae8b2ce0fea824310f3a26ab7a209651b459a7"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./C:/Users/Idang/AppData/Local/vcpkg/registries/git-trees/4057692f573c3990f5767e5e2952fc54a76cb1c9/zycore.patch",
+      "SPDXID": "SPDXRef-file-2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "5d6453871c13b6456c2c467dff03ffb8a8255f4f5ad991e788a90c5033211780"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    }
+  ]
+}

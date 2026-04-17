@@ -1,0 +1,21 @@
+# ninja log v5
+24	303	7981209950460198	CMakeFiles/Zydis.dir/src/Mnemonic.c.obj	f3205a948a25c81b
+86	316	7981209950510236	CMakeFiles/Zydis.dir/src/String.c.obj	6b712592d08ba56b
+7	331	7981209950480230	CMakeFiles/Zydis.dir/src/MetaInfo.c.obj	405ffc12fe9790b
+40	343	7981209950540240	CMakeFiles/Zydis.dir/src/Register.c.obj	978e575b1ca180b3
+98	357	7981209950759661	CMakeFiles/Zydis.dir/src/Utils.c.obj	85be0d12cadf90ac
+67	370	7981209950789627	CMakeFiles/Zydis.dir/src/Segment.c.obj	5040417845a0c339
+108	383	7981209950849629	CMakeFiles/Zydis.dir/src/Zydis.c.obj	698d04c122c1bad
+121	664	7981209953669896	CMakeFiles/Zydis.dir/src/Decoder.c.obj	c0be09f0167675f9
+344	692	7981209954045639	CMakeFiles/Zydis.dir/src/Disassembler.c.obj	9eb0d67157977c7
+317	704	7981209954335083	CMakeFiles/Zydis.dir/src/Encoder.c.obj	e06a124bf3db6555
+358	803	7981209955416138	CMakeFiles/Zydis.dir/src/Formatter.c.obj	e60411b17d8e3a09
+371	804	7981209955444111	CMakeFiles/Zydis.dir/src/FormatterBuffer.c.obj	97e215b15589f68a
+305	818	7981209955650831	CMakeFiles/Zydis.dir/src/DecoderData.c.obj	8cb9ce8336f4f5a3
+384	824	7981209955690837	CMakeFiles/Zydis.dir/src/FormatterATT.c.obj	df4a43a532f59f3a
+331	849	7981209955964641	CMakeFiles/Zydis.dir/src/EncoderData.c.obj	58471c3b235f694c
+693	972	7981209957229426	CMakeFiles/Zydis.dir/src/FormatterIntel.c.obj	d58f4c126b2bc643
+675	974	7981209957219463	CMakeFiles/Zydis.dir/src/FormatterBase.c.obj	1db4123e40b423fd
+77	1126	7981209958780928	CMakeFiles/Zydis.dir/src/SharedData.c.obj	866c2406bdd9ff35
+1126	1221	7981209959707548	Zydis.lib	c28489cc18db93a6
+1221	2377	0	CMakeFiles/install.util	80c0a42ab1daaf0

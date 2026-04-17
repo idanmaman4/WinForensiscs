@@ -1,0 +1,2 @@
+#pragma code_page(65001)
+2 /* CREATEPROCESS_MANIFEST_RESOURCE_ID */ 24 /* RT_MANIFEST */ "C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/vcpkg/blds/polyhook2/x64-windows-dbg/CMakeFiles/PolyHook_2.dir/embed.manifest"

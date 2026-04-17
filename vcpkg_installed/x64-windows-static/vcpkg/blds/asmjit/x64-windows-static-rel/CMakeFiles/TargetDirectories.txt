@@ -1,0 +1,6 @@
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/asmjit/x64-windows-static-rel/CMakeFiles/asmjit.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/asmjit/x64-windows-static-rel/CMakeFiles/edit_cache.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/asmjit/x64-windows-static-rel/CMakeFiles/rebuild_cache.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/asmjit/x64-windows-static-rel/CMakeFiles/list_install_components.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/asmjit/x64-windows-static-rel/CMakeFiles/install.dir
+C:/Users/Idang/source/repos/WinForensiscs/vcpkg_installed/x64-windows-static/vcpkg/blds/asmjit/x64-windows-static-rel/CMakeFiles/install/local.dir

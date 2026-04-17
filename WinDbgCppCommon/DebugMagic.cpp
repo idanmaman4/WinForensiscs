@@ -1,6 +1,7 @@
 #include "DebugMagic.h"
 #include "PeUtils.h"
 #include "TypeMagic.h"
+#include "IoctlHook.h"
 #include <iostream>
 
 
@@ -13,12 +14,17 @@ DebugMagic::DebugMagic(const std::wstring& dump_name) : m_master_bridge(),
                                                  m_symbols(m_master_bridge),
                                                  m_memory(m_master_bridge),
                                                  m_field_magic(*this),
-												 m_system(m_master_bridge)
-{   
+                                                 m_system(m_master_bridge),
+                                                 m_efn(m_master_bridge)
+{
+    // Install the Ioctl detour once per process.  The hook is a process-wide
+    // singleton - later DebugMagic instances share the same trampoline and
+    // symbol cache.  Failure here is non-fatal: we still function, just
+    // without the Ioctl cache speedup.
+    IoctlHook::install();
+
     m_client.open_dump(dump_name);
     m_control.wait_for_debug_event();
-    
-  
 }
 
 
@@ -83,6 +89,16 @@ SymbolMagic& DebugMagic::symbols()
 SystemMagic& DebugMagic::system()
 {
 	return m_system;
+}
+
+EfnMagic& DebugMagic::efn()
+{
+    return m_efn;
+}
+
+MasterDebugBridge& DebugMagic::master()
+{
+    return m_master_bridge;
 }
 
 

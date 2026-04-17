@@ -1,0 +1,132 @@
+{
+  "$schema": "https://raw.githubusercontent.com/spdx/spdx-spec/v2.2.1/schemas/spdx-schema.json",
+  "spdxVersion": "SPDX-2.2",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "documentNamespace": "https://spdx.org/spdxdocs/asmtk-x64-windows-static-2022-11-06#1-b497f113-6f3a-4546-9347-c81b49a042f8",
+  "name": "asmtk:x64-windows-static@2022-11-06#1 eaa2ddf1ebc98f31c9cc7c98915bbfbd7ed230f36a4c61eb890d5b71771ac128",
+  "creationInfo": {
+    "creators": [
+      "Tool: vcpkg-7d353e869753e5609a1f1a057df3db8fd356e49d"
+    ],
+    "created": "2026-04-17T09:23:01Z"
+  },
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "GENERATES",
+      "relatedSpdxElement": "SPDXRef-binary"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-0"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-1"
+    },
+    {
+      "spdxElementId": "SPDXRef-port",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-file-2"
+    },
+    {
+      "spdxElementId": "SPDXRef-binary",
+      "relationshipType": "GENERATED_FROM",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-0",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-1",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    },
+    {
+      "spdxElementId": "SPDXRef-file-2",
+      "relationshipType": "CONTAINED_BY",
+      "relatedSpdxElement": "SPDXRef-port"
+    }
+  ],
+  "packages": [
+    {
+      "name": "asmtk",
+      "SPDXID": "SPDXRef-port",
+      "versionInfo": "2022-11-06#1",
+      "downloadLocation": "git+https://github.com/microsoft/vcpkg@29f1e796d085204c9552c62adbe7279acfd8f3d9",
+      "homepage": "https://github.com/asmjit/asmtk",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "description": "Assembler toolkit based on AsmJit ",
+      "comment": "This is the port (recipe) consumed by vcpkg."
+    },
+    {
+      "name": "asmtk:x64-windows-static",
+      "SPDXID": "SPDXRef-binary",
+      "versionInfo": "eaa2ddf1ebc98f31c9cc7c98915bbfbd7ed230f36a4c61eb890d5b71771ac128",
+      "downloadLocation": "NONE",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "This is a binary package built by vcpkg."
+    },
+    {
+      "SPDXID": "SPDXRef-resource-1",
+      "name": "asmjit/asmtk",
+      "downloadLocation": "git+https://github.com/asmjit/asmtk@425b108d3afe510f8b94ca5523cd31ae29381422",
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "checksums": [
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "d825f488c66dca9ca4c3279992e4ea36a4d1b7ad65fa3e0c70b151ce0d2b1f9b5ad053ff1d447da38475bf843fe3b130706e3c9916a64f76560add9c8d796a5b"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "fileName": "./C:/Users/Idang/AppData/Local/vcpkg/registries/git-trees/29f1e796d085204c9552c62adbe7279acfd8f3d9/fix-link-amsjit.patch",
+      "SPDXID": "SPDXRef-file-0",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d9ec12e2ac018918b3785d31076ed0b1fe07e1864e7140b60f1ff76a98941bf2"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./C:/Users/Idang/AppData/Local/vcpkg/registries/git-trees/29f1e796d085204c9552c62adbe7279acfd8f3d9/portfile.cmake",
+      "SPDXID": "SPDXRef-file-1",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9b4a0b89d200a0f047c2c43add01c675408089837d8abcd723e315cb56f3a828"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    },
+    {
+      "fileName": "./C:/Users/Idang/AppData/Local/vcpkg/registries/git-trees/29f1e796d085204c9552c62adbe7279acfd8f3d9/vcpkg.json",
+      "SPDXID": "SPDXRef-file-2",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "7dc4aad1946e92dfcd33dc800f94bce4b2b729fac0ea8e8e979d5aaf1265699f"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION"
+    }
+  ]
+}

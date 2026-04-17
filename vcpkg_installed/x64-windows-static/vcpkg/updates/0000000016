@@ -1,0 +1,6 @@
+Package: polyhook2
+Feature: pe
+Architecture: x64-windows-static
+Multi-Arch: same
+Description: Implement all win pe hooking functionality
+Status: install ok half-installed

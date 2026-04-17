@@ -1,0 +1,101 @@
+Package: vcpkg-cmake-config
+Version: 2022-02-06
+Port-Version: 1
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 7f3ae7766224acac03fc38ad2eb7ad06afa02d3dd1f351ed0152312faced4f39
+Status: install ok installed
+
+Package: vcpkg-cmake
+Version: 2023-05-04
+Architecture: x64-windows
+Multi-Arch: same
+Abi: d59582820aa4346c584629dec6fe31d3b2a0cdcc93ce8a2fe2b6c1ec89831b20
+Status: install ok installed
+
+Package: asmjit
+Version: 2023-03-25
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 4761f323f40d059e8b66c312d1abc0f023ee6d8e26b35c59c7f7d1976cc02326
+Description: Complete x86/x64 JIT and Remote Assembler for C++
+Status: install ok installed
+
+Package: asmtk
+Version: 2022-11-06
+Port-Version: 1
+Depends: asmjit, vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 099c592545bec4fd67f59a917d2f0086f7396b0a87e388fc12a38938a6a98dbe
+Description: Assembler toolkit based on AsmJit
+Status: install ok installed
+
+Package: zycore
+Version: 1.3.0
+Port-Version: 1
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 1e169dd86c6f62f8b3162cd636babf69f578526e0c26fbb8f8ac120f53128152
+Description: Provides platform independent types, macros and a fallback for environments without LibC.
+Status: install ok installed
+
+Package: zydis
+Version: 4.0.0
+Port-Version: 2
+Depends: vcpkg-cmake, vcpkg-cmake-config, zycore
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 8610411125f50c68d64678cff6ca80335d9702e6cfaff8acff3ee4c6ffe35980
+Description: Fast and lightweight x86/x86-64 disassembler library.
+Status: install ok installed
+
+Package: polyhook2
+Version: 2023-08-11
+Depends: vcpkg-cmake, vcpkg-cmake-config, zydis
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 4c95bbaf06c68e7e7d46d6433ead135ffef796acfdf8c987f5d3cf21dd88105c
+Description: C++17, x86/x64 Hooking Library v2.0
+Default-Features: detours, exception, inlinentd, pe, virtuals
+Status: install ok installed
+
+Package: polyhook2
+Feature: detours
+Depends: asmjit, asmtk
+Architecture: x64-windows
+Multi-Arch: same
+Description: Implement detour functionality
+Status: install ok installed
+
+Package: polyhook2
+Feature: exception
+Architecture: x64-windows
+Multi-Arch: same
+Description: Implement all exception hooking functionality
+Status: install ok installed
+
+Package: polyhook2
+Feature: inlinentd
+Depends: asmjit
+Architecture: x64-windows
+Multi-Arch: same
+Description: Support inline hooks without specifying typedefs by generating callback stubs at runtime with AsmJit
+Status: install ok installed
+
+Package: polyhook2
+Feature: pe
+Architecture: x64-windows
+Multi-Arch: same
+Description: Implement all win pe hooking functionality
+Status: install ok installed
+
+Package: polyhook2
+Feature: virtuals
+Architecture: x64-windows
+Multi-Arch: same
+Description: Implement all virtual table hooking functionality
+Status: install ok installed
+
