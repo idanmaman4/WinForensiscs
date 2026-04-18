@@ -69,10 +69,11 @@ public:
 
     Expected<std::shared_ptr<GenericTypeContainer>> from_ptr(std::shared_ptr<GenericTypeContainer> container, const std::string& field);
 
-    MemoryMagic& memory();
-    SymbolMagic& symbols();
-    SystemMagic& system();
-    EfnMagic&    efn();
+    MemoryMagic&    memory();
+    SymbolMagic&    symbols();
+    SystemMagic&    system();
+    EfnMagic&       efn();
+    CommandMagic&   command_magic();
     MasterDebugBridge& master();
 
 
@@ -80,15 +81,16 @@ private:
 
     SymbolClient m_symbol_client;
     MasterDebugBridge m_master_bridge;
-    
+
     // clients...
-    MemoryMagic m_memory;
-    SymbolMagic m_symbols;
+    MemoryMagic    m_memory;
+    SymbolMagic    m_symbols;
     FieldInfoMagic m_field_magic;
-    ClientMagic m_client;
-    ControlMagic m_control;
-    SystemMagic m_system;
-    EfnMagic    m_efn;
+    ClientMagic    m_client;
+    ControlMagic   m_control;
+    SystemMagic    m_system;
+    EfnMagic       m_efn;
+    CommandMagic   m_command;
 };
 
 

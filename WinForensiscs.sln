@@ -55,6 +55,7 @@ Global
 		SolutionGuid = {5C07C315-B764-4FEE-A481-50131D6A9341}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Plugins\Plugins.vcxitems*{1b013434-957f-4bf6-8222-427dbd61597d}*SharedItemsImports = 4
 		WinDbgCppCommon\WinDbgCppCommon.vcxitems*{1b013434-957f-4bf6-8222-427dbd61597d}*SharedItemsImports = 4
 		MagicUtils\MagicUtils.vcxitems*{5526704e-ac3e-49f5-82fd-33fec30f2abe}*SharedItemsImports = 4
 		Plugins\Plugins.vcxitems*{5526704e-ac3e-49f5-82fd-33fec30f2abe}*SharedItemsImports = 4

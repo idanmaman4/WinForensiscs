@@ -1,4 +1,5 @@
 #include "DebugMagic.h"
+#include "CommandMagic.h"
 #include "PeUtils.h"
 #include "TypeMagic.h"
 #include "IoctlHook.h"
@@ -94,6 +95,11 @@ SystemMagic& DebugMagic::system()
 EfnMagic& DebugMagic::efn()
 {
     return m_efn;
+}
+
+CommandMagic& DebugMagic::command_magic()
+{
+    return m_command;
 }
 
 MasterDebugBridge& DebugMagic::master()

@@ -8,9 +8,9 @@ SystemMagic::SystemMagic(MasterDebugBridge& master_interface) : m_system(master_
 Expected<void> SystemMagic::attach_to_process(Address eprocess_address)
 {
 	HRESULT hr = m_system.get_interface()->SetImplicitProcessDataOffset(eprocess_address);
-	if (FAILED(hr)) {
-		throw std::exception("Failed to attach to process");
-	}
+	if (FAILED(hr))
+		return std::unexpected(std::exception("Failed to attach to process"));
+	return {};
 }
 
 Expected<Address> SystemMagic::get_current_eprocess()

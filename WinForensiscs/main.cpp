@@ -1,187 +1,67 @@
-﻿#include <windows.h>
+#include <windows.h>
 #include <dbgeng.h>
 #include <iostream>
-#include <iomanip>
 #include <string>
-#include "wdbgexts.h"
-#include <urlmon.h>
-#include<vector>
-#include <array>
-#include <ranges>
-#include "polyhook2/Detour/x64Detour.hpp"
+
 #include "DebugMagic.h"
-#include "MagicUtils.h"
-#include "ProcessMagic.h"
-#include "GenericTypeContainer.h"
-#include "extsfns.h"
+#include "PluginRegistry.h"
+
 #pragma comment(lib, "urlmon.lib")
 #pragma comment(lib, "dbgeng.lib")
 
-
-
-
-
-namespace
-{
-    struct HandleEnumCtx
-    {
-        ULONG count;
-    };
-
-    BOOLEAN handle_enum_cb(PKDEXT_HANDLE_INFORMATION info, ULONG /*flags*/, PVOID ctx)
-    {
-        auto* c = static_cast<HandleEnumCtx*>(ctx);
-        c->count += 1;
-
-        std::cout << "      Handle 0x" << std::hex << info->Handle
-                  << " Object 0x"    << info->Object
-                  << " Body 0x"      << info->ObjectBody
-                  << " Access 0x"    << info->GrantedAccess
-                  << " Attr 0x"      << info->HandleAttributes
-                  << std::dec
-                  << (info->PagedOut ? " [paged-out]" : "")
-                  << "\n";
-
-		
-        return TRUE;
-    }
+static void print_usage(const wchar_t* exe) {
+    std::wcerr <<
+        L"Usage:\n"
+        L"  " << exe << L" list\n"
+        L"  " << exe << L" <dump.dmp> <plugin>\n\n"
+        L"Run 'list' with no dump to see available plugins.\n\n"
+        L"Examples:\n"
+        L"  " << exe << L" list\n"
+        L"  " << exe << L" C:\\Dumps\\MEMORY.DMP ssdt\n"
+        L"  " << exe << L" C:\\Dumps\\MEMORY.DMP pslist\n"
+        L"  " << exe << L" C:\\Dumps\\MEMORY.DMP vad\n";
 }
 
-int wmain(int argc, wchar_t* argv[])
-{
+// Print all registered plugins without loading a dump.
+static void print_plugin_list(const PluginRegistry& registry) {
+    std::cout << "\nAvailable plugins:\n";
+    std::cout << "  " << std::string(50, '-') << "\n";
+    for (const auto& [name, desc] : registry.get_plugin_info())
+        std::cout << "  " << name << "\n    " << desc << "\n";
+}
 
-	if (argc < 2) {
-		std::wcerr << L"Usage:\n";
-		std::wcerr << L"  DumpProcessLister.exe <path_to_kernel_dump.dmp>\n\n";
-		std::wcerr << L"Example:\n";
-		std::wcerr << L"  DumpProcessLister.exe C:\\Dumps\\MEMORY.DMP\n";
-		return 1;
-	}
+int wmain(int argc, wchar_t* argv[]) {
+    PluginRegistry registry = make_plugin_registry();
 
-	DebugMagic debug_magic(argv[1]);
-	debug_magic.load_ntos_symbols();
-	
+    // "list" requires no dump — works as a standalone first argument
+    if (argc == 2 && std::wstring(argv[1]) == L"list") {
+        print_plugin_list(registry);
+        return 0;
+    }
 
-	Expected<uint32_t> ssdt_size = debug_magic.get_symbol_address_as_struct<uint32_t>("nt", "KiServiceLimit");
-	if (!ssdt_size.has_value()) {
-		return -1;
-	}
-	Expected<std::vector<uint32_t>> ssdt = debug_magic.get_symbol_address_as_struct_array<uint32_t>("nt", "KiServiceTable", *ssdt_size);
-	Expected<Address> ssdt_address = debug_magic.symbols().get_symbol_address("nt", "KiServiceTable");
-	if (!ssdt.has_value() || !ssdt_address.has_value()) {
-		return -1;
-	}
-	
-	size_t i=0;
-	auto resolveEntry = [&](uint32_t rawEntry) -> std::pair<Address, std::string>{
-		const Address entryAddress = (rawEntry >> 4) + *ssdt_address;
-		auto symbolResult = debug_magic.symbols().get_symbol_from_address(entryAddress);
-		if (symbolResult) {
-			return {entryAddress, symbolResult->second};
-		}
+    // All other invocations need exactly: <dump> <plugin>
+    if (argc != 3) {
+        print_usage(argv[0]);
+        return 1;
+    }
 
-	   return {entryAddress,"Unknown"};
+    std::wstring dump_path  = argv[1];
+    std::wstring wplugin    = argv[2];
+    std::string  plugin_name(wplugin.begin(), wplugin.end());
 
+    // Allow "list" with a dump path too — still skip loading
+    if (plugin_name == "list") {
+        print_plugin_list(registry);
+        return 0;
+    }
 
-	};
+    std::cout << "[*] Opening: ";
+    std::wcout << dump_path << L"\n";
 
-	for (auto ssdt_item : ssdt.value() | std::views::transform(resolveEntry)){
-		std::cout << i << ".) "<< ssdt_item.second << " | " << std::hex << ssdt_item.first << std::dec << std::endl;
-		i+= 1;
-	}
+    DebugMagic dbg(dump_path);
+    dbg.load_ntos_symbols();
+    std::cout << "[*] Symbols loaded.\n";
 
-
-
-
-	auto  process_head = debug_magic.get_symbol_address_as<"nt","_LIST_ENTRY">("nt","PsActiveProcessHead");
-	if (!process_head.has_value()) {
-		return -1;
-	}
-
-	Address current_link = process_head.value()->get<Address>("Flink").value();
-	auto head= process_head.value()->address();
-
-	i=0;
-	do {
-	   i+=1;
-	   auto eprocess = debug_magic.get_struct_from_field_as<"nt", "_EPROCESS", "ActiveProcessLinks">(current_link);
-	   if (!eprocess.has_value()){
-			break;
-	   }
-
-
-	   auto image_file_pointer = debug_magic.from_ptr(eprocess.value(), "ImageFilePointer");
-	   std::wstring full_name;
-	   if (image_file_pointer.has_value()) {
-			auto unicode_string_obj = image_file_pointer.value()->as_object("FileName"); 
-			full_name = MagicUtils::parse_unicode_string(debug_magic, unicode_string_obj.value());
-	   }
-
-	   auto pid =  eprocess.value()->as_number_unsigned("UniqueProcessId");
-
-	   std::cout << i << " .) ";
-	   std::cout << " Pid: " <<pid.value_or(0);
-	   std::cout << " | Name: " << eprocess.value()->as_string("ImageFileName").value_or("Unkown_Name");
-	   std::wcout << " | Full Path: " << full_name << std::endl ;
-	   
-	   try {
-		   if (pid.has_value())
-		   {
-			   ProcessMagic magic(debug_magic, eprocess.value()->address());
-			   auto peb = debug_magic.from_ptr(eprocess.value(), "Peb");
-			   if (peb.has_value())
-			   {
-				  //debug_magic.load_module_symbols("ntdll");
-
-				   auto ldr = debug_magic.from_ptr(peb.value(), "Ldr");
-				   if (ldr.has_value())
-				   {
-						Address ldr_entry =  ldr.value()->as_object("InLoadOrderModuleList").value()->as_pointer("Flink").value();
-						auto value = debug_magic.get_struct_from_field_as<"ntdll","_LDR_DATA_TABLE_ENTRY","InMemoryOrderLinks">(ldr_entry).value();
-						std::wcout << " PEB NAME: " << MagicUtils::parse_unicode_string(debug_magic,value->as_object("BaseDllName").value()) << std::endl;
-				   }
-			   }
-			   else
-			   {
-				   
-				   std::cout << peb.error().what() << std::endl;
-			   }
-
-			   HandleEnumCtx handle_ctx{ 0 };
-			   HRESULT hr = debug_magic.efn().enumerate_handles(
-				   eprocess.value()->address(),
-				   0,
-				   0,
-				   handle_enum_cb,
-				   &handle_ctx);
-			   if (SUCCEEDED(hr))
-			   {
-				   std::cout << "      -> " << handle_ctx.count << " handle(s)\n";
-			   }
-			   else
-			   {
-				   std::cout << "      handle enumeration failed: 0x"
-							 << std::hex << hr << std::dec << "\n";
-			   }
-		   }
-	   }
-		catch (const std::exception& exp)
-		{
-			
-			std::cout << "ERROR: " << exp.what() << std::endl;
-
-		}
-
-
-	   Expected<Address> link = eprocess.value()->as_object("ActiveProcessLinks")->get()->as_pointer("Flink");
-	   if (!link.has_value()) {
-			break;
-	   }
-
-	   current_link = link.value();
-
-	}while (current_link != 0 && current_link != head);
-
-
-	return 0;
+    registry.run_one(plugin_name, dbg);
+    return 0;
 }

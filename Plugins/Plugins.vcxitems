@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="Globals">
     <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -13,5 +13,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ProjectCapability Include="SourceItemsFromImports" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)PluginRegistry.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ListPlugin.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)SsdtPlugin.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)PsListPlugin.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)HandlesPlugin.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)VadPlugin.cpp" />
   </ItemGroup>
 </Project>
